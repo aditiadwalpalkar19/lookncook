@@ -1,0 +1,31 @@
+<div *ngIf="loading" class="loading">Loading recipe...</div>
+
+<div *ngIf="!loading && recipe" class="recipe-container">
+  <button class="back-btn" (click)="goBack()">← Back</button>
+
+  <div class="recipe-image">
+    <img [src]="recipe.image_url" [alt]="recipe.title" />
+  </div>
+
+  <div class="recipe-details">
+    <h2>{{ recipe.title }}</h2>
+
+    <div class="recipe-meta">
+      <span><strong>Servings:</strong> {{ recipe.servings }}</span>
+      <span><strong>Cooking Time:</strong> {{ recipe.cooking_time }} min</span>
+    </div>
+
+    <h3>Ingredients</h3>
+    <ul>
+      <li *ngFor="let ing of recipe.ingredients">
+        {{ ing.quantity }} {{ ing.unit }} {{ ing.description }}
+      </li>
+    </ul>
+
+    <h3>Full Recipe</h3>
+    <p>
+      Full recipe available
+      <a [href]="recipe.source_url" target="_blank">here</a>.
+    </p>
+  </div>
+</div>

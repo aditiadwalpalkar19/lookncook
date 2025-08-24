@@ -1,0 +1,30 @@
+<div class="recipe-container">
+  <header>
+    <h1>
+      Hey <span class="username">{{ user?.displayName }} there!</span>
+    </h1>
+    <p>Discover your favorite recipes</p>
+    <!-- <button class="logout-btn" (click)="logout()">Logout</button> -->
+  </header>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search recipes..."
+      [(ngModel)]="userInput"
+      (keyup.enter)="search()"
+    />
+    <button (click)="search()">Search</button>
+  </div>
+
+  <div class="recipe-grid">
+    <div
+      class="recipe-card"
+      *ngFor="let recipe of recipes"
+      (click)="selectedRecipe(recipe)"
+    >
+      <img [src]="recipe.image_url" />
+      <h3 [innerHTML]="recipe.title"></h3>
+    </div>
+  </div>
+</div>
